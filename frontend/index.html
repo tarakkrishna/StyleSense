@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StyleAI - AI Fashion Stylist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/layout.css" />
+  <link rel="stylesheet" href="./css/animations.css" />
+</head>
+<body>
+  <div class="bg-glow"></div>
+  <div id="toastContainer" class="toast-container"></div>
+
+  <main class="app-shell">
+    <section id="landing" class="view active">
+      <header class="hero">
+        <p class="eyebrow">AI Fashion Intelligence</p>
+        <h1>StyleAI</h1>
+        <p class="hero-subtitle">Upload your photo, detect your skin tone, and get premium outfit recommendations in seconds.</p>
+        <button id="startBtn" class="btn btn-primary">Start Styling</button>
+      </header>
+
+      <div class="floating-grid">
+        <article class="floating-card">
+          <h3>Face + Tone Analysis</h3>
+          <p>OpenCV-powered face detection and cheek-tone mapping into practical style categories.</p>
+        </article>
+        <article class="floating-card delay-1">
+          <h3>AI Outfit Engine</h3>
+          <p>Groq LLM generates colors, outfits, accessories, and hairstyle ideas for your event.</p>
+        </article>
+        <article class="floating-card delay-2">
+          <h3>Fashion-Forward UI</h3>
+          <p>Glassmorphism cards, premium gradients, and smooth transitions for a brand-style feel.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="upload" class="view">
+      <div class="panel">
+        <h2>Upload Your Photo</h2>
+        <p class="muted">Use a clear, front-facing photo for best skin tone detection.</p>
+
+        <div id="dropZone" class="drop-zone">
+          <input id="fileInput" type="file" accept="image/*" hidden />
+          <p>Drag & drop image here</p>
+          <p class="muted">or</p>
+          <button id="browseBtn" class="btn btn-secondary" type="button">Browse File</button>
+        </div>
+
+        <div id="previewWrapper" class="preview-wrapper hidden">
+          <img id="previewImage" alt="Preview" />
+          <div id="uploadLoader" class="loader hidden"></div>
+        </div>
+
+        <div id="detectedTone" class="tone-chip hidden"></div>
+
+        <div class="form-grid">
+          <label>
+            Gender
+            <select id="genderSelect">
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+              <option value="non-binary">Non-binary</option>
+            </select>
+          </label>
+
+          <label>
+            Occasion
+            <select id="occasionSelect">
+              <option value="casual">Casual</option>
+              <option value="office">Office</option>
+              <option value="wedding">Wedding</option>
+              <option value="party">Party</option>
+              <option value="date night">Date Night</option>
+            </select>
+          </label>
+
+          <label>
+            Season
+            <select id="seasonSelect">
+              <option value="spring">Spring</option>
+              <option value="summer">Summer</option>
+              <option value="autumn">Autumn</option>
+              <option value="winter">Winter</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="button-row">
+          <button id="backToLandingBtn" class="btn btn-ghost" type="button">Back</button>
+          <button id="recommendBtn" class="btn btn-primary" type="button" disabled>Get Recommendations</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="view">
+      <div class="panel">
+        <h2>Your Style Recommendations</h2>
+        <p class="muted">Tailored to your skin tone and styling preferences.</p>
+
+        <div id="skeleton" class="skeleton-grid hidden">
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+        </div>
+
+        <div id="resultsGrid" class="results-grid hidden">
+          <article class="result-card">
+            <h3>Compulsory Base Outfit</h3>
+            <p><strong>Top:</strong> <span id="mandatoryTop"></span></p>
+            <p><strong>Bottom:</strong> <span id="mandatoryBottom"></span></p>
+            <p><strong>Footwear:</strong> <span id="mandatoryFootwear"></span></p>
+          </article>
+          <article class="result-card">
+            <h3>Outfit</h3>
+            <ul id="outfitList"></ul>
+          </article>
+          <article class="result-card">
+            <h3>Colors</h3>
+            <ul id="colorList"></ul>
+          </article>
+          <article class="result-card">
+            <h3>Accessories</h3>
+            <ul id="accessoryList"></ul>
+          </article>
+          <article class="result-card">
+            <h3>Hairstyle</h3>
+            <p id="hairstyleText"></p>
+          </article>
+          <article class="result-card full-width">
+            <h3>Why It Works</h3>
+            <p id="whyText"></p>
+          </article>
+          <article class="result-card full-width">
+            <h3>Shop the Look</h3>
+            <div id="shoppingGrid" class="shopping-grid"></div>
+          </article>
+        </div>
+
+        <div class="button-row">
+          <button id="tryAgainBtn" class="btn btn-secondary" type="button">Try Another Photo</button>
+          <button id="retryBtn" class="btn btn-primary hidden" type="button">Retry AI Request</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+@keyframes drift {
+  0% {
+    transform: translate(-3%, -2%) scale(1);
+  }
+  100% {
+    transform: translate(8%, 7%) scale(1.08);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.floating-card {
+  animation: fadeUp 0.7s ease forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.12s;
+}
+
+.delay-2 {
+  animation-delay: 0.24s;
+}
+
+.result-card {
+  animation: fadeUp 0.55s ease forwards;
+}
+
+.view {
+  animation: fadeUp 0.45s ease;
+}
+
+.drop-zone,
+.btn,
+.result-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.drop-zone:hover,
+.result-card:hover {
+  transform: translateY(-2px);
+}
+
+.result-card:hover,
+.btn:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+}
