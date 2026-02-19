@@ -1,0 +1,31 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.pytest_cache/
+
+# Environments and secrets
+.env
+*.env
+!.env.example
+venv/
+.venv/
+StyleAI/backend/venv/
+StyleAI/backend/.env
+
+# Runtime data
+StyleAI/backend/uploads/*
+!StyleAI/backend/uploads/.gitkeep
+
+# Build / logs
+*.log
+dist/
+build/
